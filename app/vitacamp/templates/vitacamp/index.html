@@ -1,0 +1,151 @@
+{% extends 'vitacamp/base.html' %}
+
+
+{% block content %}
+<div class="form-content">
+    <div class="row g-3">
+        <div class="col-xl-8 col-lg-7">
+            <!-- Area Chart -->
+            <div class="card shadow mb-3 dash-shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Количество детей в год</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="myAreaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- Bar Chart -->
+            <div class="card shadow mb-3 dash-shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Количество повторных возвращений в год</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="myBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Donut Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-3 dash-shadow">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Посещения мероприятий, %</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-pie pt-4">
+                        <canvas id="myPieChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-primary"></i> Спортивные
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-success"></i> Творческие
+                        </span>
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-info"></i> Учебные
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="row g-3">
+        <div class="table-content">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <caption class="table-caption">Дети</caption>
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Отчество</th>
+                        <th scope="col">Дата рождения</th>
+                        <th scope="col">Адрес</th>
+                        <th scope="col">Номер телефона</th>
+                        <th scope="col">Отряд</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+						{% for children in childrens %}
+                        <tr>
+                        <th scope="row">{{ children.pk }}</th>
+                        <td>{{children.last_name}}</td>
+                        <td>{{children.first_name}}</td>
+                        <td>{{children.middle_name}}</td>
+                        <td>{{children.birthday}}</td>
+                        <td>г. Анапа, Пионерский проспект, 42</td>
+                        <td>{{children.contact_phone}}</td>
+                        <td>Первый отряд</td>
+                        </tr>
+						{% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row g-3">
+        <div class="table-content">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <caption class="table-caption">Родители</caption>
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Отчество</th>
+                        <th scope="col">Номер телефона</th>
+                        <th scope="col">Дети</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Сидорова</td>
+                        <td>Мария</td>
+                        <td>Николаевна</td>
+                        <td>+79220144653</td>
+                        <td>Сидоров Иван Петрович</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row g-3">
+        <div class="table-content">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <caption class="table-caption">Мероприятия</caption>
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Дата проведения</th>
+                        <th scope="col">Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Посещение музея</td>
+                        <td>25.05.2022</td>
+                        <td>Раскопки античного города Горгиппия привлекают 
+                            внимание гостей и жителей курорта, так как расположены в 
+                            самой курортной зоне и хранят историю черноморской земли.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

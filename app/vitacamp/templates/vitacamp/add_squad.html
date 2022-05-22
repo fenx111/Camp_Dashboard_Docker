@@ -1,0 +1,41 @@
+{% extends 'vitacamp/base.html' %}
+
+
+{% block content %}
+<div class="form-content">
+    <form method="post">{% csrf_token %}
+      <div class="squad-form-content">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="inputName" class="form-label">Название</label>
+            <input type="text" name="nick" class="form-control" id="inputName" aria-describedby="nameHelp" required>
+            <div id="nameHelp" class="form-text">Укажите название отряда</div>
+          </div>
+          <div class="col-md-6">
+            <label for="inputDate" class="form-label">Дата формирования</label>
+            <input type="date" class="form-control" id="inputDate" aria-describedby="dateHelp" required>
+            <div id="dateHelp" class="form-text">Укажите дату формирования отряда</div>
+          </div>
+          <div class="col-md-6">
+            <label for="selectLeader" class="form-label">Вожатый</label>
+            <select id="selectLeader" class="form-select" aria-describedby="selectLeaderHelp" required>
+              <option value="none" selected>Выберите вариант</option>
+            </select>
+            <div id="selectLeaderHelp" class="form-text">Укажите вожатого для формируемого отряда</div>
+          </div>
+          <div class="col-md-6">
+            <label for="selectCamp" class="form-label">Лагерь</label>
+            <select id="selectCamp" class="form-select" aria-describedby="selectCampHelp" required>
+              <option value="none" selected>Выберите вариант</option>
+            </select>
+            <div id="selectCampHelp" class="form-text">Укажите лагерь для формируемого отряда</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 top-margin bottom-margin">
+        <input type="hidden" name="slogan" value="slogan">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+      </div>
+      </form>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'vitacamp/base.html' %}
+
+
+{% block content %}
+<div class="form-content">
+    <form method="post">{% csrf_token %}
+      <div class="event-form-content">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="inputName" class="form-label">Название</label>
+            <input type="text" name="title" class="form-control" id="inputName" aria-describedby="nameHelp" required>
+            <div id="nameHelp" class="form-text">Укажите название мероприятия</div>
+          </div>
+          <div class="col-md-3">
+            <label for="inputType" class="form-label">Тип мероприятия</label>
+            <input type="text" name="content" class="form-control" id="inputType" aria-describedby="typeHelp" required>
+            <div id="typeHelp" class="form-text">Укажите тип проводимого мероприятия</div>
+          </div>
+          <div class="col-md-3">
+            <label for="inputDate" class="form-label">Дата проведения</label>
+            <input type="date" name="created_date" class="form-control" id="inputDate" aria-describedby="dateHelp" required>
+            <div id="dateHelp" class="form-text">Укажите дату проведения мероприятия</div>
+          </div>
+          
+          <div class="dropdown col-md-6">
+            <label for="inputSquadButon" class="form-label">Отряды</label>
+            <button id="inputSquadButon" type="button" class="form-select align-text" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" aria-describedby="squadButonHelp">
+              Выберите отряды
+            </button>
+            <div id="squadButonHelp" class="form-text">Укажите отряды привлеченные к мероприятию</div>
+            <div class="dropdown-menu col-md-6 width-calc">
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                  <label class="form-label option-text" for="dropdownCheck">Все</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="inputDescription" class="form-label">Описание</label>
+            <textarea class="form-control" name="content" id="inputDescription" aria-describedby="descriptionHelp" rows="4" required></textarea>
+            <div id="descriptionHelp" class="form-text">Опишите проводимое мероприятие</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 top-margin bottom-margin">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+      </div>
+    </form>
+</div>
+{% endblock %}

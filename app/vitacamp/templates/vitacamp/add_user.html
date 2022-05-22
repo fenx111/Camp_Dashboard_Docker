@@ -1,0 +1,162 @@
+{% extends 'vitacamp/base.html' %}
+
+
+{% block content %}
+<div class="form-content">
+
+        <div class="col-12">
+          <label for="selectUserRole" class="form-label white-color">Роль пользователя</label>
+          <select id="selectUserRole" class="form-select" aria-describedby="selectHelp" onchange="changeUserFormContent(this.value)" required>
+            <option value="none" selected>Выберите вариант</option>
+            <option value="leader">Вожатый</option>
+            <option value="parent">Родитель</option>
+            <option value="children">Ребенок</option>
+          </select>
+          <div id="selectHelp" class="form-text white-color">Укажите вариант роли пользователя</div>
+        </div>
+        <div class="user-form-content">
+
+          <form class="" method="post"> {% csrf_token %}
+          <div id="leader-form" class="row g-3 leader-form-content">
+            <div class="col-md-6">
+              <label for="inputSecondName" class="form-label">Фамилия</label>
+              <input type="text" class="form-control" id="inputSecondName" name="last_name" aria-describedby="secondNameHelp" required>
+              <div id="secondNameHelp" class="form-text">Укажите фамилию вожатого</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputFirstName" class="form-label">Имя</label>
+              <input type="text" class="form-control" id="inputFirstName" name="first_name" aria-describedby="firstNameHelp" required>
+              <div id="firstNameHelp" class="form-text">Укажите имя вожатого</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPatronymic" class="form-label">Отчество</label>
+              <input type="text" class="form-control" id="inputPatronymic" name="middle_name" aria-describedby="patronymicHelp" required>
+              <div id="patronymicHelp" class="form-text">Укажите отчество вожатого</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPhone" class="form-label">Номер телефона</label>
+              <input type="text" class="form-control" id="inputPhone" name="contact_phone" aria-describedby="phoneHelp" required>
+              <div id="phoneHelp" class="form-text">Укажите номер телефона вожатого</div>
+            </div>
+
+            <div class="col-12 top-margin bottom-margin">
+              <input type="hidden" name="type_user" value="leader">
+              <button type="submit" class="btn btn-primary top-margin">Сохранить</button>
+            </div>
+          </div>
+          </form>
+          <form class="" method="post"> {% csrf_token %}
+          <div id="parent-form" class="row g-3 parent-form-content">
+            <div class="col-md-6">
+              <label for="inputSecondName" class="form-label">Фамилия</label>
+              <input type="text" name="last_name" class="form-control" id="inputSecondName" aria-describedby="secondNameHelp" required>
+              <div id="secondNameHelp" class="form-text">Укажите фамилию родителя</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputFirstName" class="form-label">Имя</label>
+              <input type="text" name="first_name" class="form-control" id="inputFirstName" aria-describedby="firstNameHelp" required>
+              <div id="firstNameHelp" class="form-text">Укажите имя родителя</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPatronymic" class="form-label">Отчество</label>
+              <input type="text" name="middle_name" class="form-control" id="inputPatronymic" aria-describedby="patronymicHelp" required>
+              <div id="patronymicHelp" class="form-text">Укажите отчество родителя</div>
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Адрес</label>
+              <input type="text" class="form-control" id="inputAddress" aria-describedby="addressHelp" required>
+              <div id="addressHelp" class="form-text">Укажите адрес прописки</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">Город</label>
+              <input type="text" class="form-control" id="inputCity" aria-describedby="cityHelp" required>
+              <div id="cityHelp" class="form-text">Укажите город прописки</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPhone"  class="form-label">Номер телефона</label>
+              <input type="text"  name="contact_phone" class="form-control" id="inputPhone" aria-describedby="phoneHelp" required>
+              <div id="phoneHelp" class="form-text">Укажите номер телефона родителя</div>
+            </div>
+
+            <div class="col-12 top-margin bottom-margin">
+              <input type="hidden" id="type_user" value="parent">
+              <button type="submit" class="btn btn-primary top-margin">Сохранить</button>
+            </div>
+          </div>
+          </form>
+          <form class="" method="post"> {% csrf_token %}
+          <div id="children-form" class="row g-3 children-form-content">
+            <div class="col-md-6">
+              <label for="inputSecondName" class="form-label">Фамилия</label>
+              <input type="text" name="last_name" class="form-control" id="inputSecondName" aria-describedby="secondNameHelp" required>
+              <div id="secondNameHelp" class="form-text">Укажите фамилию ребенка</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputFirstName" class="form-label">Имя</label>
+              <input type="text" name="first_name" class="form-control" id="inputFirstName" aria-describedby="firstNameHelp" required>
+              <div id="firstNameHelp" class="form-text">Укажите имя ребенка</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPatronymic" class="form-label">Отчество</label>
+              <input type="text" name="middle_name" class="form-control" id="inputPatronymic" aria-describedby="patronymicHelp" required>
+              <div id="patronymicHelp" class="form-text">Укажите отчество ребенка</div>
+            </div>
+            <div class="col-md-3">
+              <label for="inputBirthDate" class="form-label">Дата рождения</label>
+              <input type="date" name="birthday" class="form-control" id="inputBirthDate" aria-describedby="birthDateHelp" required>
+              <div id="birthDateHelp" class="form-text">Укажите день рождения</div>
+            </div>
+            <div class="col-md-3">
+              <label for="inputMale" class="form-label">Пол</label>
+              <select id="selectUserRole" class="form-select" aria-label="Default select example" aria-describedby="maleHelp" required>
+                <option value="none" selected>Выберите вариант</option>
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+              </select>
+              <div id="maleHelp" class="form-text">Укажите пол ребенка</div>
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Адрес</label>
+              <input type="text" class="form-control" id="inputAddress" aria-describedby="addressHelp" required>
+              <div id="addressHelp" class="form-text">Укажите адрес прописки</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">Город</label>
+              <input type="text" class="form-control" id="inputCity" aria-describedby="cityHelp" required>
+              <div id="cityHelp" class="form-text">Укажите город прописки</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPhone" class="form-label">Номер телефона</label>
+              <input type="text" name="contact_phone" class="form-control" id="inputPhone" aria-describedby="phoneHelp" required>
+              <div id="phoneHelp" class="form-text">Укажите номер телефона ребенка</div>
+            </div>
+            <div class="col-md-6">
+              <label for="selectSquad" class="form-label">Отряд</label>
+              <select id="selectSquad" class="form-select" aria-describedby="selectSquadHelp" required>
+                <option value="none" selected>Выберите вариант</option>
+              </select>
+              <div id="selectSquadHelp" class="form-text">Укажите отряд для ребенка</div>
+            </div>
+            <div class="col-md-6">
+              <label for="selectParent" class="form-label">Родитель</label>
+              <select id="selectParent" class="form-select" aria-describedby="selectParentHelp" required>
+                <option value="none" selected>Выберите вариант</option>
+              </select>
+              <div id="selectParentHelp" class="form-text">Укажите родителя для ребенка</div>
+            </div>
+
+            <div class="col-12 top-margin bottom-margin">
+              <input type="hidden" id="type_user" value="children">
+              <button type="submit" class="btn btn-primary top-margin">Сохранить</button>
+            </div>
+          </div>
+          </form>
+
+        </div>
+<!--        <div class="col-12 top-margin bottom-margin">-->
+<!--          <input type="hidden" id="children" value="children">-->
+<!--          <button type="submit" class="btn btn-primary top-margin">Сохранить</button>-->
+<!--        </div>-->
+
+</div>
+{% endblock %}
